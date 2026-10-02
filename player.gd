@@ -3,6 +3,8 @@ extends CharacterBody2D
 @export var walk_speed=200
 @export var run_speed=600
 
+# Inventory / Material (US-03)
+@export var wood: int = 2
 
 var current_stamina
 @export var max_stamina=100
