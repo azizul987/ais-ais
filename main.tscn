@@ -5,7 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://dqrjaw637ugpb" path="res://PostApocalypse_AssetPack_v1.1.2/Tiles/Wire-Fence/Wire-Fence_TileSet.png" id="2_lquwl"]
 [ext_resource type="Script" uid="uid://bghm83pqu5kc2" path="res://day_night_color.gd" id="3_1bvp3"]
 [ext_resource type="AudioStream" uid="uid://ctucovcphdh5w" path="res://dragon-studio-police-siren-397963.mp3" id="4_lquwl"]
-[ext_resource type="PackedScene" path="res://window_barricade.tscn" id="5_window"]
+[ext_resource type="PackedScene" uid="uid://c80kfri7il26u" path="res://window_barricade.tscn" id="5_window"]
+[ext_resource type="PackedScene" path="res://fence_barricade.tscn" id="6_fence"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0xm2m"]
 texture = ExtResource("1_ig7tw")
@@ -770,5 +771,12 @@ offset_right = 62.0
 offset_bottom = 23.0
 text = "sdsdssd"
 
-[node name="WindowBarricade" parent="." instance=ExtResource("5_window")]
+[node name="WindowBarricade" parent="." unique_id=825012585 instance=ExtResource("5_window")]
 position = Vector2(1130, -49)
+
+[node name="WindowBarricade2" parent="." unique_id=404250796 instance=ExtResource("5_window")]
+position = Vector2(1202, -24)
+
+[node name="FenceBarricade" parent="." instance=ExtResource("6_fence")]
+position = Vector2(1162, -20)
+

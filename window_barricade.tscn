@@ -1,13 +1,14 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene format=3 uid="uid://c80kfri7il26u"]
 
-[ext_resource type="Script" path="res://window_barricade.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://PostApocalypse_AssetPack_v1.1.2/Objects/Windows/Window_1_broken_wood.png" id="2_texture"]
+[ext_resource type="Script" uid="uid://cdfk0dm3h1dae" path="res://window_barricade.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dbpft43y73i77" path="res://PostApocalypse_AssetPack_v1.1.2/Tiles/Wire-Fence/Wire-Fence_Gate_Lock.png" id="2_ws01f"]
+[ext_resource type="Texture2D" uid="uid://dqrjaw637ugpb" path="res://PostApocalypse_AssetPack_v1.1.2/Tiles/Wire-Fence/Wire-Fence_TileSet.png" id="3_mow5y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_window"]
 size = Vector2(16, 16)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_detect"]
-radius = 24.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ws01f"]
+size = Vector2(16, 43)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
 bg_color = Color(0.15, 0.15, 0.15, 0.8)
@@ -23,24 +24,47 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[node name="WindowBarricade" type="StaticBody2D"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ct1f2"]
+texture = ExtResource("3_mow5y")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_edaia"]
+sources/0 = SubResource("TileSetAtlasSource_ct1f2")
+
+[node name="WindowBarricade" type="StaticBody2D" unique_id=404250796]
 script = ExtResource("1_script")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_texture")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=94564557]
+visible = false
+texture = ExtResource("2_ws01f")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1794127153]
 shape = SubResource("RectangleShape2D_window")
 
-[node name="InteractionArea" type="Area2D" parent="."]
+[node name="InteractionArea" type="Area2D" parent="." unique_id=504745268]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
-shape = SubResource("CircleShape2D_detect")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=614565951]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_ws01f")
 
-[node name="UI" type="Node2D" parent="."]
+[node name="UI" type="Node2D" parent="." unique_id=26685831]
 z_index = 10
 
-[node name="HealthBar" type="ProgressBar" parent="UI"]
+[node name="HealthBar" type="ProgressBar" parent="UI" unique_id=1559977356]
 offset_left = -16.0
 offset_top = -14.0
 offset_right = 16.0
@@ -50,7 +74,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_fill")
 value = 50.0
 show_percentage = false
 
-[node name="PromptLabel" type="Label" parent="UI"]
+[node name="PromptLabel" type="Label" parent="UI" unique_id=931837169]
 offset_left = -50.0
 offset_top = -24.0
 offset_right = 50.0
@@ -59,3 +83,8 @@ theme_override_font_sizes/font_size = 7
 text = "[E] Perbaiki"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1724882176]
+position = Vector2(8, -8)
+tile_map_data = PackedByteArray(0, 0, 255, 255, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0)
+tile_set = SubResource("TileSet_edaia")
