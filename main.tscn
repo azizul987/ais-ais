@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://bggipe51q61ls" path="res://PostApocalypse_AssetPack_v1.1.2/Tiles/Background_Dark-Green_TileSet.png" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dws1xdxuvpiuy" path="res://player.tscn" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://bghm83pqu5kc2" path="res://day_night_color.gd" id="3_1bvp3"]
+[ext_resource type="AudioStream" uid="uid://ctucovcphdh5w" path="res://dragon-studio-police-siren-397963.mp3" id="4_lquwl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0xm2m"]
 texture = ExtResource("1_ig7tw")
@@ -345,6 +347,16 @@ texture = ExtResource("1_ig7tw")
 [sub_resource type="TileSet" id="TileSet_h2yge"]
 sources/0 = SubResource("TileSetAtlasSource_0xm2m")
 
+[sub_resource type="Gradient" id="Gradient_1bvp3"]
+offsets = PackedFloat32Array(0.50403225, 0.76209676, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lquwl"]
+gradient = SubResource("Gradient_1bvp3")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.505, 0)
+
 [node name="Node2D" type="Node2D" unique_id=119037756]
 
 [node name="Tanah" type="TileMapLayer" parent="." unique_id=426006102]
@@ -356,3 +368,22 @@ position = Vector2(1162, -49)
 
 [node name="Camera2D" type="Camera2D" parent="player" unique_id=541322106]
 zoom = Vector2(3.39, 3.39)
+
+[node name="Senter" type="PointLight2D" parent="player" unique_id=1671152026]
+position = Vector2(0, 3)
+energy = 0.0
+texture = SubResource("GradientTexture2D_lquwl")
+
+[node name="DayNightColor" type="CanvasModulate" parent="." unique_id=261558075]
+position = Vector2(1162, -46)
+script = ExtResource("3_1bvp3")
+
+[node name="SirenPlayer" type="AudioStreamPlayer" parent="." unique_id=1804393206]
+stream = ExtResource("4_lquwl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=843282138]
+
+[node name="TimeLabel" type="Label" parent="CanvasLayer" unique_id=1136384564]
+offset_right = 62.0
+offset_bottom = 23.0
+text = "sdsdssd"
